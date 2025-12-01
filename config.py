@@ -214,7 +214,7 @@ section.main > div, section.main > div > div,
     text-transform: uppercase; 
     letter-spacing: 1px; 
     font-weight: 600; 
-    white-space: nowrap; 
+    /* white-space: nowrap; <--- Rimosso per permettere il ritorno a capo */
 }
 
 /* ===== TITOLI SEZIONE ===== */
@@ -287,12 +287,24 @@ a, a:visited, a:hover, a:active, .metric-card a {
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE (Modificato) ===== */
 @media screen and (max-width: 768px) {
     [data-testid="stHorizontalBlock"] > div,
     [data-testid="column"] { flex: 1 1 100% !important; }
-    .metric-label { white-space: normal; }
-    .metric-card { min-height: 100px; }
+
+    /* Nuova regola per il valore della metrica: scala di più su schermi stretti */
+    .metric-value { 
+        font-size: clamp(1.2rem, 5vw, 1.8rem); 
+    }
+    
+    /* white-space: normal; è già presente e garantisce il ritorno a capo */
+    .metric-label { white-space: normal; } 
+    
+    /* Nuova regola per la card: riduce il padding per massimizzare lo spazio */
+    .metric-card { 
+        min-height: 100px; 
+        padding: clamp(0.5rem, 2vw, 0.75rem); 
+    }
     .formula-box { font-size: clamp(0.75rem, 2vw, 0.9rem); }
 }
 
