@@ -16,67 +16,49 @@ from config import DEFAULT_PARAMS, LOGO_URL, TIMEZONE_OBJ
 
 def display_sidebar_header():
     """Visualizza logo e titolo nella sidebar in modo responsive"""
-    st.sidebar.markdown(f"""
+    st.sidebar.markdown("""
     <style>
-        section[data-testid="stSidebar"] button[kind="icon"],
-        section[data-testid="stSidebar"] [role="button"],
-        [data-testid="stSidebarCollapseButton"],
-        [data-testid="collapsedControl"] {{
-            position: relative !important;
-            top: -1rem !important;
-            right: 1rem !important;
-            z-index: 9999 !important;
-            pointer-events: auto !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-        }}
-        
-        .sidebar-header-logo {{
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
+
+        /* Contenitore principale del logo più semplice e professionale */
+        .sidebar-header-logo {
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #74a65b, #f9d71c);
-            border-radius: 15px;
-            padding: 0.5vw; /* padding scalabile */
-            margin-top: -10vh;
-            margin-bottom: -1vh;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-        }}
-        
-        .sidebar-header-logo img {{
-            width: auto;
-            height: auto;
-            max-height: 20vh; /* scala con altezza viewport */
-            max-width: 90%;   /* scala con larghezza contenitore */
+            align-items: center;
+            padding: 1.2rem 0;
+            margin-top: -1rem;
+            margin-bottom: 0.5rem;
+
+            /* sfondo leggero, elegante */
+            background: #ffffffcc;
+            backdrop-filter: blur(6px);
+
+            /* ombra morbida */
+            box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Logo responsivo con proporzioni migliori */
+        .sidebar-header-logo img {
+            max-width: 75%;
+            max-height: 18vh;
             object-fit: contain;
             object-position: center;
-            border-radius: 5px;
-        }}
-        
-        @media (max-width: 600px) {{
-            .sidebar-header-logo {{
-                padding: 4vw;
-            }}
-            .sidebar-header-logo img {{
+
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .sidebar-header-logo img {
+                max-width: 85%;
                 max-height: 20vh;
-            }}
-        }}
+            }
+        }
+
     </style>
-    
+
     <div class="sidebar-header-logo">
-        <img src="{LOGO_URL}" alt="Logo">
+        <img src='""" + LOGO_URL + """' alt='Logo'>
     </div>
     """, unsafe_allow_html=True)
-    
-    st.sidebar.markdown(
-        "<h3 style='text-align:center; margin-bottom:0rem;'>Interfaccia INPUT</h3>", 
-        unsafe_allow_html=True
-    )
 
 
 from functools import lru_cache
@@ -104,7 +86,7 @@ def get_location_from_comune(comune: str, max_retries: int = 3):
 
 def get_location_and_date():
     """Raccoglie località e data simulazione"""
-    with st.sidebar.expander("🌍 Localizzazione e Data", expanded=False):
+    with st.sidebar.expander("🌍 Localizzazione e Data", expanded=True):
         col1, col2 = st.columns(2)
         
         with col1:

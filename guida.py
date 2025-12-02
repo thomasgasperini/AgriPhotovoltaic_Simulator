@@ -205,7 +205,7 @@ def show_pv_guide():
     Funzione principale per visualizzare la guida tecnica completa in un expander con tab.
     """
 
-    with st.expander("🔬 Manuale Operativo", expanded=False):
+    with st.expander("APV Simulator by ResFarm - Manuale Operativo", expanded=False):
         tab1, tab2, tab3, tab4 = st.tabs([
             "Introduzione e Flusso", 
             "Input Utente", 

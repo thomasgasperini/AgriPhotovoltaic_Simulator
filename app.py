@@ -6,6 +6,7 @@ from metrics import display_metrics
 from maps import display_map_section
 from guida import show_pv_guide
 from agri_calculations import calculate_all_agri
+from visualization_3d import display_3d_field  # <--- AGGIUNGI QUESTA RIGA
 
 def setup_page():
     """Configura la pagina Streamlit e applica CSS globale"""
@@ -33,6 +34,9 @@ def main():
     # --- Map and metrics ---
     display_map_section(params)
     display_metrics(results, params)
+
+    # --- 3D Visualization ---
+    display_3d_field(params)  # <--- AGGIUNGI QUESTA RIGA
 
 if __name__ == "__main__":
     main()
