@@ -31,4 +31,4 @@ if result.stdout.strip():
 else:
     print("✅ Nessuna modifica da commitare")
 
-print("🎉 Deploy completato! Streamlit Cloud si aggiornerà automaticamente.")
+print("Deploy completato! Streamlit Cloud si aggiornerà automaticamente.")

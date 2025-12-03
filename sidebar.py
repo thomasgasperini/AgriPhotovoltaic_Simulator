@@ -295,8 +295,7 @@ def get_system_params():
 def get_agricultural_params():
     """Raccoglie parametri agricoli"""
     with st.sidebar.expander("🌽 Parametri Agricoli", expanded=False):
-        col1, col2 = st.columns(2)
-        hectares = col1.number_input(
+        hectares = st.number_input(
             "Ettari Totali",
             value=float(DEFAULT_PARAMS["hectares"]),
             min_value=0.1,
@@ -304,7 +303,7 @@ def get_agricultural_params():
             format="%.2f",
             help="Superficie disponibile del sito"
         )
-        colture = col2.selectbox(
+        colture = st.selectbox(
             "Tipo di Coltura",
             options=[
                 "Microgreens",
